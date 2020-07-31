@@ -71,3 +71,12 @@ curl -H 'Accept: application/json' -X GET http://localhost:8080/metrics
 . . .
 
 ```
+
+### Load test
+
+```bash
+export JMETER=/Users/pnagy/u01/apache-jmeter-5.3/bin
+```
+```bash
+$JMETER/jmeter.sh -n -t test/Test\ Plan\ for\ Go\ Implementation.jmx -l test/"java.load.test."$(date +"%Y-%m-%d_%H-%M")/log.jtl -e -o test/"java.load.test."$(date +"%Y-%m-%d_%H-%M")
+```
