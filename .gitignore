@@ -1,3 +1,5 @@
 .idea
 */my_service
 */vendor
+
+*.iml

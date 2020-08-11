@@ -78,12 +78,8 @@ public final class Main {
     private static Routing createRouting(Config config) {
         MetricsSupport metrics = MetricsSupport.create();
         StringService stringService = new StringService();
-//        HealthSupport health = HealthSupport.builder()
-//                .addLiveness(HealthChecks.healthChecks())   // Adds a convenient set of checks
-//                .build();
 
         return Routing.builder()
-                //.register(health)                   // Health at "/health"
                 .register(metrics)                  // Metrics at "/metrics"
                 .register("/", stringService)
                 .build();
