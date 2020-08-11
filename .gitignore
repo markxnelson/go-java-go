@@ -3,3 +3,6 @@
 */vendor
 
 *.iml
+test-results
+go_service
+test_results

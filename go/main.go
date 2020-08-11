@@ -8,6 +8,7 @@ import (
 	kitprometheus "github.com/go-kit/kit/metrics/prometheus"
 	httptransport "github.com/go-kit/kit/transport/http"
 	"github.com/go-kit/kit/log"
+	"github.com/go-kit/kit/log/level"
 	_ "github.com/go-kit/kit/endpoint"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"net/http"
@@ -15,9 +16,9 @@ import (
 )
 
 // main
-
 func main() {
 	logger := log.NewLogfmtLogger(os.Stderr)
+	logger = level.NewFilter(logger, level.AllowError())
 
 	fieldKeys := []string{"method", "error"}
 	requestCount := kitprometheus.NewCounterFrom(stdprometheus.CounterOpts{
@@ -70,5 +71,3 @@ func main() {
 	logger.Log("msg", "HTTP", "addr", ":8080")
 	logger.Log("err", http.ListenAndServe(":8080", nil))
 }
-
-

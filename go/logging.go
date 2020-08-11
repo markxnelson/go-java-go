@@ -6,6 +6,7 @@ package main
 import (
 	"time"
 	"github.com/go-kit/kit/log"
+	"github.com/go-kit/kit/log/level"
 )
 
 type loggingMiddleware struct {
@@ -15,7 +16,7 @@ type loggingMiddleware struct {
 
 func (mw loggingMiddleware) Uppercase(s string) (output string, err error) {
 	defer func(begin time.Time) {
-		mw.logger.Log(
+		level.Info(mw.logger).Log(
 			"method", "uppercase",
 			"input", s,
 			"output", output,
@@ -30,7 +31,7 @@ func (mw loggingMiddleware) Uppercase(s string) (output string, err error) {
 
 func (mw loggingMiddleware) Count(s string) (n int) {
 	defer func(begin time.Time) {
-		mw.logger.Log(
+		level.Info(mw.logger).Log(
 			"method", "count",
 			"input", s,
 			"n", n,
