@@ -81,7 +81,7 @@ then
       curl -s -X POST -H "Content-Type: application/json" -d '{"s":"hello"}' http://localhost:8080/uppercase > /dev/null
       curl -s -X POST -H "Content-Type: application/json" -d '{"s":"hello"}' http://localhost:8080/count > /dev/null
       if ! ((i % 50)); then
-      	echo "Warmup in progress ${i}/1000"
+      	echo "Warmup in progress $((i*2))/1000"
       fi
     done
     echo "Warmup is done."
@@ -92,6 +92,8 @@ fi
 cd $current_dir
 
 $JMETER/jmeter.sh -n -f -t test/test-plan.jmx -l "${directory}"/log.jtl -e -o "${directory}"
+
+mv test_results $directory/test_results.csv
 
 # https://www.baeldung.com/native-memory-tracking-in-jvm
 jcmd $helidon_pid VM.native_memory summary.diff scale=KB

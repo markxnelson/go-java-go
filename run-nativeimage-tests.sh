@@ -95,7 +95,7 @@ then
       curl -s -X POST -H "Content-Type: application/json" -d '{"s":"hello"}' http://localhost:8080/uppercase > /dev/null
       curl -s -X POST -H "Content-Type: application/json" -d '{"s":"hello"}' http://localhost:8080/count > /dev/null
       if ! ((i % 50)); then
-      	echo "Warmup in progress ${i}/1000"
+      	echo "Warmup in progress $((i*2))/1000"
       fi
     done
     printMemory $nativeimage_pid
