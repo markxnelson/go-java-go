@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: traefik-pathrouting-1
+  namespace: gojavago
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: go-app.com
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: go-app-service
+            servicePort: 8080
+  - host: java-helidon-app.com
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: java-helidon-app-service
+            servicePort: 8080
+  - host: java-helidon-jlink-app.com
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: java-helidon-jlink-app-service
+            servicePort: 8080
+  - host: native-app.com
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: native-app-service
+            servicePort: 8080
