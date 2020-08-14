@@ -95,7 +95,8 @@ fi
 
 cd $current_dir
 
-#$JMETER_HOME/bin/jmeter.sh -n -f -t test/test-plan.jmx -l "${directory}"/log.jtl -e -o "${directory}"
+JVM_ARGS="-Xms512m -Xmx2048m"
+
 $JMETER_HOME/bin/jmeter.sh -n -f  \
   -Joke_lb_ipaddress=$ip_address \
   -Jheader_host=$header_host \
