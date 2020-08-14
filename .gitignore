@@ -3,6 +3,9 @@
 */vendor
 
 *.iml
-test-results
 go_service
 test_results
+test_results_go
+test_results_java_helidon
+test_results_java_helidon_jlink
+oke_usage

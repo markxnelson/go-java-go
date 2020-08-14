@@ -23,7 +23,7 @@ else
 fi
 JMETER=$JMETER_HOME/bin
 
-if [ -z ${JMETER_HOME+x} ];
+if [ -z ${GRAALVM_HOME+x} ];
 then
   echo "GRAALVM_HOME is unset!"
   exit 1

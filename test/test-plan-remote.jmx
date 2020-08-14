@@ -37,7 +37,7 @@
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">129.146.197.189</stringProp>
+          <stringProp name="HTTPSampler.domain">${__P(oke_lb_ipaddress)}</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -60,7 +60,7 @@
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">host</stringProp>
-                <stringProp name="Header.value">go-app.com</stringProp>
+                <stringProp name="Header.value">${__P(header_host)}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -174,7 +174,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">test_results</stringProp>
+          <stringProp name="filename">test_results.csv</stringProp>
           <stringProp name="RespTimeGraph.interval">100</stringProp>
           <stringProp name="RespTimeGraph.graphtitle">Response Time Graph</stringProp>
           <intProp name="RespTimeGraph.lineshapepoint">4</intProp>
