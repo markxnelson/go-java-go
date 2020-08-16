@@ -89,4 +89,6 @@ $JMETER/jmeter.sh -n -f -t test/test-plan.jmx -l "${directory}"/log.jtl -e -o "$
 
 printMemory $go_pid
 
+mv test_results $directory/test_results.csv
+
 pkill -f "go_service"

@@ -8,6 +8,11 @@
 #    Xmx/Xms  (int MB)             Initial and max size of the heap
 #    javaopts (JAVA OPTIONS)       Extra Java Options e.g.: -XX:+UseG1GC
 
+function printMemory {
+  mem=$(ps -o rss= -p "$1")
+  printf "Memory usage: $mem kB\n"
+}
+
 if [ -z ${JMETER_HOME+x} ]
 then
   echo "JMETER_HOME is unset!"
@@ -91,6 +96,8 @@ fi
 
 cd $current_dir
 
+printMemory $helidon_pid
+
 $JMETER/jmeter.sh -n -f -t test/test-plan.jmx -l "${directory}"/log.jtl -e -o "${directory}"
 
 mv test_results $directory/test_results.csv
@@ -104,5 +111,7 @@ echo "/usr/libexec/java_home -V===>" >> $java_version_file
 /usr/libexec/java_home -V >> $java_version_file 2>&1
 echo "java -version===>" >> $java_version_file
 java -version >> $java_version_file 2>&1
+
+printMemory $helidon_pid
 
 kill -9 $helidon_pid

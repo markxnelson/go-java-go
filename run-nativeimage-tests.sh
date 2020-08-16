@@ -79,8 +79,6 @@ sleep 2
 
 echo "Native Image app is running PID: ${nativeimage_pid}"
 
-printMemory $nativeimage_pid
-
 #warm up
 if [[ $warmup = "warmup" ]]
 then
@@ -104,10 +102,14 @@ else
     echo "No warmup."
 fi
 
+printMemory $nativeimage_pid
+
 cd $current_dir
 
 $JMETER/jmeter.sh -n -f -t test/test-plan.jmx -l "${directory}"/log.jtl -e -o "${directory}"
 
 printMemory $nativeimage_pid
+
+mv test_results $directory/test_results.csv
 
 pkill -f helidon-quickstart-se

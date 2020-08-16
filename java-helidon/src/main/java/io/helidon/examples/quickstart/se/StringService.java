@@ -78,6 +78,21 @@ public class StringService implements Service {
      * @param response the server response
      */
     private void postCountHandler(ServerRequest request, ServerResponse response, JsonObject json) {
+//        //generate CPU load
+//        long startTime = System.currentTimeMillis();
+//        double load = 0.8;
+//        final long duration = 10000;
+//        try {
+//            // Loop for the given duration
+//            while (System.currentTimeMillis() - startTime < duration) {
+//                // Every 100ms, sleep for the percentage of unladen time
+//                if (System.currentTimeMillis() % 100 == 0) {
+//                    Thread.sleep((long) Math.floor((1 - load) * 100));
+//                }
+//            }
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         processRequest(json, "Count request: ", response, it -> String.valueOf(it.length()));
     }
 
