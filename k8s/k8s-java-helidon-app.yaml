@@ -16,6 +16,11 @@ spec:
       containers:
       - name: java-helidon-app
         image: peternagy/go-java-go:java-helidon-app-1.0
+        resources:
+          limits:
+            memory: 2Gi
+          requests:
+            memory: 1Gi
         ports:
         - containerPort: 8080
 ---
@@ -25,7 +30,6 @@ metadata:
   name: java-helidon-app-service
   namespace: gojavago
 spec:
-#  type: LoadBalancer
   ports:
   - port: 8080
     protocol: TCP
